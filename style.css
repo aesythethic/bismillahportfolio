@@ -91,3 +91,9 @@ p{
   border-radius: 0%;
   padding: 5%;
 }
+
+#contentpreview{
+  background-color: #f49cbb;
+  color: white;
+  background-image: url(maintelefon.jpg);
+}
