@@ -75,3 +75,19 @@ p{
   object-fit: cover;
   border-radius: 50%;
 }
+
+#pichelper{
+  width: 300px;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 0%;
+  padding: 5%;
+}
+
+#surah{
+  width: 500px;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 0%;
+  padding: 5%;
+}
