@@ -97,3 +97,14 @@ p{
   color: white;
   background-image: url(maintelefon.jpg);
 }
+
+pre {
+  background-color: #f49cbb;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: monospace;
+}

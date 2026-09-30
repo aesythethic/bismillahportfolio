@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Covered+By+Your+Grace&family=Edu+QLD+Hand:wght@400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1 id="tajuk">Design Pattern</h1>
+<br><br>
+<h2 id="tajuk">Composite Pattern</h2>
+
+<p>Motivation: Imagine you need to build a system where you need to read files in a computer. However, the file(s) could be stand alone or inside the folder.The 
+    most noob code we can make is by checking the type of object (if it is either a file or a folder), then iterate accordingly.
+</p>
+
+<pre><code>
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    static class MyFile {
+        private String name;
+
+        MyFile(String name) {
+            this.name = name;
+        }
+
+        void display() {
+            System.out.println("File: " + name);
+        }
+    }
+
+    static class Folder {
+        private String name;
+        private List<Object> children;
+
+        Folder(String name) {
+            this.name = name;
+            this.children = new ArrayList<>();
+        }
+
+        void add(Object child) {
+            children.add(child);
+        }
+
+        void display() {
+            System.out.println("Folder: " + name);
+
+            for (Object child : children) {
+
+                if (child instanceof MyFile) {
+                    MyFile file = (MyFile) child;
+                    file.display();
+
+                } else if (child instanceof Folder) {
+                    Folder folder = (Folder) child;
+                    folder.display();
+
+                } else {
+                    System.out.println("Unknown item");
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        MyFile notes = new MyFile("notes.txt");
+        MyFile homework = new MyFile("homework.pdf");
+
+        Folder assignments = new Folder("Assignments");
+        assignments.add(homework);
+
+        Folder school = new Folder("School");
+        school.add(notes);
+        school.add(assignments);
+
+        school.display();
+    }
+}
+</code></pre>
+<p>With composite pattern , it treats both folder and file as the same type, by make sure that file and folder inherite from the same interferance. In this case, a composite class. Therefore in this case no longer need to check if the type is folder or a file </p>
+</body>
+</html>

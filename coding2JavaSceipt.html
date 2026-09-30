@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Covered+By+Your+Grace&family=Edu+QLD+Hand:wght@400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Page Title</title>
+</head>
+<body>
+	<header>
+		<h1 id="tajuk">Java Script</h1>
+	</header>
+
+	<main id="home">
+		<h2>Object </h2>
+		<p>JavaScript punya object, dia dakam bentuk dictionary yang banyak.</p>
+		<pre><code>const car = {
+  make: "Volkswagen",
+  model: "Golf",
+  year: 2026,
+  color: "blue",
+  priceUSD: 40000,
+
+  // a method is just a function assigned to a property
+  applyDiscount: function(discountPercentage) {
+    const multiplier = 1 - discountPercentage / 100;
+    this.priceUSD *= multiplier;
+  },
+  // shorthand way to add a method to an object literal
+  getSummary() {
+    return `${this.year} ${this.make} ${this.model} in ${this.color}, priced at $${this.priceUSD} (USD).`;
+  },</code></pre>
+
+  <h2>Object Constructor</h2>
+
+  <pre><code>function Player(name, marker) {
+  this.name = name;
+  this.marker = marker;
+}
+</code></pre>
+
+<p> Call it by using <code>new</code>:
+
+	<pre><code>const player = new Player("steve", "X");
+console.log(player.name); // "steve"</code></pre>
+
+<p>Bila kita panggil <code> new </code>, object baru akan dicreate. Tak serupa kalu kita cuma panggil:<code>Player("steve", "X")</code></p>
+
+Cara buat method untuk object pun berbeza dengan java:
+<pre><code>function Player(name, marker) {
+  this.name = name;
+  this.marker = marker;
+  this.sayName = function() {
+    console.log(this.name);
+  };
+}
+
+const player1 = new Player("steve", "X");
+const player2 = new Player("also steve", "O");
+player1.sayName(); // logs "steve"
+player2.sayName(); // logs "also steve"</code></pre>
+
+<p>Untuk elakkan system tak crash bila ceveloper letak new, gune new. target: <pre><code>function Player(name, marker) {
+  if (!new.target) {
+    throw Error("You must use the 'new' operator to call the constructor");
+  }
+  this.name = name;
+  this.marker = marker;
+  this.sayName = function() {
+    console.log(this.name);
+  };
+}</code></pre></p>
+
+<h2>Prototype</h2>
+Semua object falam javaScript boleh linked ke object yang lain. If a propert or method is not found on the object, java script will look for in [[prototype]]
+Macam inheritance, kalau dah define dalam prototpe, object boleh ambik apa method yang ada dalm protytype.For example, if there was a .sayHello() function defined on the [[Prototype]], player1 can access the function just as if it was its own function - player1.sayHello(). But it’s not just player1 who can call the .sayHello() function, even player2 can call it, since it’s defined on its [[Prototype]].<br>
+<br>
+Macammana nak letak something dalam prototype<pre><code>Player.prototype.sayHello = function() {
+  console.log("Hello, I'm a player!");
+};
+
+player1.sayHello(); // logs "Hello, I'm a player!"
+player2.sayHello(); // logs "Hello, I'm a player!"</code></pre></code>
+</main>
+
+Code ni define sa yhelo function on player prototype. Jadi any player object created lepas ni boleh guna the prototype.
+
+<h2>Method </h2>
+<p><pre><code>Player.prototype.getMarker = function() {
+  console.log(`My marker is "${this.marker}"`);</code></pre><br>
+
+Code di atas menunjukkan cara macammana nak buat method</p>
+
+<h2>Type</h2>
+
+untuk assign variable, ada 3 type yang lain daripada yang lain. <code>var,let and const</code>
+<pre><code> var buah = "limau" (assign poorly + global variable - boleh access ikut suka hang)
+ let buah = "limau" (boleh ubah, block variable)
+ const buah ="limau" (takleh ubah, block variable)</code></pre>
+
+	<footer>
+		<p>&copy; mindacahli</p>
+	</footer>
+</body>
+</html>
