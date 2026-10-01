@@ -45,7 +45,7 @@ body {
   grid-template-columns:1fr 2fr 1fr;
   gap: 24-x;
   max-width:1100px;
-  margin: 40px auto;
+  margin: 0% auto;
   padding:0 20px
   box-sizing: border-box;
 }
@@ -95,7 +95,7 @@ p{
 #contentpreview{
   background-color: #f49cbb;
   color: white;
-  background-image: url(maintelefon.jpg);
+
 }
 
 pre {
@@ -107,4 +107,32 @@ pre {
 
 code {
   font-family: monospace;
+}
+
+.hover-image-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.hover-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+
+.hover-image-container .hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.hover-img:hover{
+  opacity: 1;
+}
+
+#prevpic{
+  width: 100%;
 }
